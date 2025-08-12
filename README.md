@@ -1,20 +1,24 @@
 # GenAi-Tokenizer 🧠
 
-An interactive tokenizer playground to explore how text breaks into tokens, how unique token IDs are assigned, and how decoding works — all powered by a custom tokenizer with a clean UI built on DaisyUI and Tailwind CSS.
+An interactive tokenizer playground to explore how text breaks into tokens, how unique token IDs are assigned, and how decoding works - all powered by a custom tokenizer with a clean UI built on DaisyUI and Tailwind CSS.
+
+![Project Screenshot](./public/project.png)
 
 ## Features
 
-- **Corpus Learning:** Type or paste large paragraphs to _learn_ vocabulary dynamically.
-- **Real-time Vocabulary:** Vocabulary builds live with corpus input, stored persistently in `localStorage`.
-- **Encoding:** Instantly see tokens and their assigned IDs as you type or paste text.
+- **Corpus Learning:** Type or paste large paragraphs to _learn_ vocabulary explicitly.
+- **Dynamic Vocabulary Growth:** Vocabulary updates both when learning corpus and dynamically as you type in the Encoding input.
+- **Persistent Vocabulary:** Vocabulary is stored centrally in React Context and persisted to `localStorage` for session consistency.
+- **Encoding:** Instantly see tokens and their assigned IDs for any text input.
 - **Decoding:** Decode by entering comma-separated token IDs, showing the original text.
 - **Token Visualization:** View tokens with color-coded types (words, punctuation, whitespace, etc.).
-- **Custom Tokenizer Logic:** Pure JS tokenizer with no external dependencies, designed for transparency and customization.
+- **Custom Tokenizer Logic:** Pure JavaScript tokenizer with no external dependencies, designed for transparency and customization.
 
 ## Tech Stack
 
-- React + TypeScript + Vite for fast development and type safety.
+- React + TypeScript + Vite.
 - Tailwind CSS + DaisyUI for responsive, accessible styling.
+- React Context + Hooks for centralized vocabulary state management.
 - LocalStorage-backed vocabulary persistence to keep vocab consistent across sessions.
 
 ## Getting Started
@@ -37,25 +41,25 @@ npm run preview
 
 ## Usage Tips
 
-- **Corpus:** Use the default corpus or type your own text — vocabulary updates live and is saved locally.
-- **Encoding:** Enter any text prompt to see how it tokenizes and converts into IDs.
-- **Decoding:** Input comma-separated IDs to see the corresponding decoded text.
-- **Clear & Reset:** Use clear buttons to reset inputs; vocabulary is managed centrally to reflect updates app-wide.
+- **Corpus:** Use the default corpus or type your own text — click "Learn Vocabulary" to update the vocabulary from the corpus explicitly.
+- **Encoding:** Enter any text prompt to see tokenization live; vocabulary updates dynamically as you type here as well.
+- **Decoding:** Input comma-separated token IDs to see the corresponding decoded text.
+- **Clear & Reset:** Clear inputs as needed; vocabulary is managed centrally and reflects updates across all components.
 
 ## Tokenizer Details
 
 - **Token Types Recognized:** words, numbers, punctuation, whitespace, special tokens.
-- **Vocabulary Management:** Vocabulary stored centrally using a React hook with localStorage persistence.
-- **Encoding:** Assigns incremental numeric IDs per unique token, reusing existing vocab IDs.
+- **Vocabulary Management:** Centralized via React Context, updated from corpus or encoding inputs, and persisted to `localStorage`.
+- **Encoding:** Assigns incremental numeric IDs per unique token, merging new tokens into existing vocabulary.
 - **Decoding:** Maps numeric IDs back to tokens; unknown IDs render as `[UNK]`.
-- **Performance:** Vocabulary memoized and updated efficiently to prevent unnecessary recomputation and re-renders.
+- **Performance:** Vocabulary updates are batched and memoized to prevent unnecessary recomputations and UI re-renders.
 
-## For suggestions or issues, feel free to:
+## Contributing & Support
 
-- Open an issue on [GitHub Issues](https://github.com/n4ryn/genai-tokenizer/issues).
-- Reach out to me on [Twitter](https://x.com/n4ryn_) or [LinkedIn](https://www.linkedin.com/in/n4ryn/).
+- Open an issue or feature request on [GitHub Issues](https://github.com/n4ryn/genai-tokenizer/issues).
+- Reach out on [Twitter](https://x.com/n4ryn_) or [LinkedIn](https://www.linkedin.com/in/n4ryn/).
 
 ## Badges
 
-[![GitHub Stars](https://img.shields.io/github/stars/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/namaste-dsa/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/namaste-dsa/network)
+[![GitHub Stars](https://img.shields.io/github/stars/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/genai-tokenizer/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/genai-tokenizer/network)
