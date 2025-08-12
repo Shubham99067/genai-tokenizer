@@ -24,7 +24,7 @@ const PromptOutput = ({ type, title, tokens }: Props) => {
                 <p className={`bg-[#E8FBE1] px-1.5`} key={index}>
                   "{token}"
                 </p>
-                <span className="absolute text-xs bottom-[-12px] right-0 text-slate-500">
+                <span className="absolute text-xs bottom-[-12px] left-0 text-slate-500">
                   {token.length * 34}
                 </span>
               </div>

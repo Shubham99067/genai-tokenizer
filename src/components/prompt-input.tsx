@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { RxInfoCircled } from "react-icons/rx";
 
@@ -8,11 +7,18 @@ interface Props {
   rows?: number;
   characters?: number;
   tooltip?: string;
+  input?: string;
+  setInput: (value: string) => void;
 }
 
-const PromptInput = ({ title, placeholder, rows = 2, tooltip }: Props) => {
-  const [prompt, setPrompt] = useState("");
-
+const PromptInput = ({
+  title,
+  placeholder,
+  rows = 2,
+  tooltip,
+  input,
+  setInput,
+}: Props) => {
   return (
     <div className="bg-linear-to-br from-blue-100/80 to-blue-100/20 md:w-1/2 p-4 rounded-md flex flex-col justify-between">
       <div>
@@ -26,11 +32,11 @@ const PromptInput = ({ title, placeholder, rows = 2, tooltip }: Props) => {
         </div>
 
         <textarea
-          value={prompt}
+          value={input}
           placeholder={placeholder}
           className="textarea textarea-md font-mono w-full rounded-md border-none focus:border-none"
           rows={rows}
-          onChange={(e) => setPrompt(e.target.value)}
+          onChange={(e) => setInput(e.target.value)}
         ></textarea>
       </div>
 
@@ -39,7 +45,7 @@ const PromptInput = ({ title, placeholder, rows = 2, tooltip }: Props) => {
 
         <button
           className="btn bg-white hover:shadow-md/80 border-none btn-xs rounded-md shadow-md/40 shadow-blue-500/40"
-          onClick={() => setPrompt("")}
+          onClick={() => setInput("")}
         >
           <RiDeleteBinLine /> Clear
         </button>

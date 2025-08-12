@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 import PromptInput from "./prompt-input";
 import PromptOutput from "./prompt-output";
 
 const Encoding = () => {
-  const tokens = ["Hello", " ", "World", " "];
+  const [input, setInput] = useState("");
 
   return (
     <>
@@ -13,9 +15,11 @@ const Encoding = () => {
           title="Text Input"
           placeholder="Insert your prompt..."
           rows={6}
+          input={input}
+          setInput={setInput}
         />
 
-        <PromptOutput title="Tokens" type="encode" tokens={tokens} />
+        <PromptOutput title="Tokens" type="encode" tokens={input.split(" ")} />
       </div>
     </>
   );

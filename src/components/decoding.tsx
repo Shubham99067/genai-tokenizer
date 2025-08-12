@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 import PromptInput from "./prompt-input";
 import PromptOutput from "./prompt-output";
 
 const Decoding = () => {
-  const tokens = ["Hello", " ", "World", " "];
+  const [input, setInput] = useState("");
 
   return (
     <>
@@ -13,9 +15,11 @@ const Decoding = () => {
           title="Tokens Input"
           placeholder="Insert comma-separated tokens..."
           tooltip="Enter comma-separated values (e.g., 323, 5)"
+          input={input}
+          setInput={setInput}
         />
 
-        <PromptOutput title="Tokens" type="decode" tokens={tokens} />
+        <PromptOutput title="Tokens" type="decode" tokens={input.split(" ")} />
       </div>
     </>
   );
