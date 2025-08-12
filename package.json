@@ -1,5 +1,5 @@
 {
-  "name": "genai-custom-tokenizer",
+  "name": "genai-tokenizer",
   "private": true,
   "version": "0.0.0",
   "type": "module",

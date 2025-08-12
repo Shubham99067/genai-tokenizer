@@ -12,7 +12,7 @@ const Navbar = () => {
         <button
           className="btn bg-white hover:shadow-xl/70 border-none btn-sm rounded-md shadow-xl/40 shadow-blue-500/40"
           onClick={() =>
-            window.open("https://github.com/n4ryn/genai-custom-tokenizer")
+            window.open("https://github.com/n4ryn/genai-tokenizer")
           }
         >
           <RxGithubLogo />
