@@ -1,29 +1,30 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
+
 import PromptInput from "./prompt-input";
 import PromptOutput from "./prompt-output";
 
-import { buildVocabulary, encode } from "../utils/tokenizer";
-import type { EncodingProps } from "../utils/types";
+import { useVocabulary } from "../context/VocabularyContext";
 
-const Encoding = ({ vocab, setVocab }: EncodingProps) => {
+import { encode } from "../utils/tokenizer";
+
+const Encoding = () => {
+  const { vocab, learnFromAdditionalText } = useVocabulary();
   const [input, setInput] = useState("");
   const [tokens, setTokens] = useState<number[]>([]);
 
-  const handleEncode = useCallback(
-    (text: string) => {
-      setInput(text);
+  useEffect(() => {
+    if (!input.trim()) {
+      setTokens([]);
+      return;
+    }
 
-      if (!text.trim()) {
-        setTokens([]);
-        return;
-      }
+    setTokens(encode(input, vocab));
+  }, [input, vocab]);
 
-      const newVocab = buildVocabulary(text);
-      setVocab(newVocab);
-      setTokens(encode(text, newVocab));
-    },
-    [setVocab]
-  );
+  const handleInputChange = (text: string) => {
+    setInput(text);
+    learnFromAdditionalText(text);
+  };
 
   return (
     <>
@@ -34,7 +35,7 @@ const Encoding = ({ vocab, setVocab }: EncodingProps) => {
           placeholder="Insert your prompt..."
           rows={6}
           input={input}
-          onInputChange={handleEncode}
+          onInputChange={handleInputChange}
         />
 
         <PromptOutput

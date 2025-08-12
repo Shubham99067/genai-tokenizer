@@ -3,14 +3,6 @@ export type InvVocab = { [id: number]: string };
 
 export type Colors = Record<string, string>;
 
-export interface DecodingProps {
-  vocab: Vocab;
-}
-
-export interface EncodingProps extends DecodingProps {
-  setVocab: React.Dispatch<React.SetStateAction<Record<string, number>>>;
-}
-
 export interface PromptInputProps {
   title: string;
   placeholder: string;
@@ -29,6 +21,11 @@ export interface PromptOutputProps {
   vocab?: Record<string, number>;
 }
 
-export interface CorpusProps {
-  setVocab: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+export interface VocabularyContextValue {
+  vocab: Vocab;
+  corpus: string;
+  setCorpus: (text: string) => void;
+  learnVocabulary: () => void;
+  learnFromAdditionalText: (text: string) => void;
+  resetVocab: () => void;
 }

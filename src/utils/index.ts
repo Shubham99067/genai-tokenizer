@@ -20,3 +20,6 @@ export const getTokenType = (token: string): keyof typeof colors => {
 
 export const SPECIAL_TOKENS = ["<PAD>", "<UNK>", "<CLS>", "<SEP>", "<MASK>"];
 export const VOCAB_STORAGE_KEY = "custom_tokenizer_vocab";
+
+export const DEFAULT_CORPUS =
+  "The quick brown fox jumps over the lazy dog. Natural language processing is a field of artificial intelligence that focuses on enabling computers to understand, interpret, and generate human language. It involves various techniques like tokenization, parsing, and semantic analysis. Generative AI models learn from vast amounts of text data to create new and coherent content. They use sophisticated tokenizers to break down text into numerical representations.";

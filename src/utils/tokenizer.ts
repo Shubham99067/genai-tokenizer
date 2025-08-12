@@ -27,7 +27,7 @@ function saveVocab(vocab: Vocab): void {
  * Build vocabulary from input text (persists to localStorage).
  */
 export function buildVocabulary(text: string): Vocab {
-  let vocab: Vocab = loadVocab() || {};
+  const vocab: Vocab = loadVocab() || {};
   let idx = Object.keys(vocab).length;
 
   // Add special tokens if vocab is empty

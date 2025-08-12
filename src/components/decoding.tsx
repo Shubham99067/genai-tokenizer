@@ -1,32 +1,34 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+
 import PromptInput from "./prompt-input";
 import PromptOutput from "./prompt-output";
 
-import { decode } from "../utils/tokenizer";
-import type { DecodingProps } from "../utils/types";
+import { useVocabulary } from "../context/VocabularyContext";
 
-const Decoding = ({ vocab }: DecodingProps) => {
+import { decode } from "../utils/tokenizer";
+
+const Decoding = () => {
+  const { vocab } = useVocabulary();
   const [input, setInput] = useState("");
   const [decodedText, setDecodedText] = useState("");
 
-  const handleDecode = useCallback(
-    (text: string) => {
-      setInput(text);
+  useEffect(() => {
+    if (!input.trim()) {
+      setDecodedText("");
+      return;
+    }
 
-      if (!text.trim()) {
-        setDecodedText("");
-        return;
-      }
+    const ids = input
+      .split(",")
+      .map((s) => parseInt(s.trim(), 10))
+      .filter((x) => !isNaN(x));
 
-      const ids = text
-        .split(",")
-        .map((s) => parseInt(s.trim(), 10))
-        .filter((x) => !isNaN(x));
+    setDecodedText(decode(ids, vocab));
+  }, [input, vocab]);
 
-      setDecodedText(decode(ids, vocab));
-    },
-    [vocab]
-  );
+  const handleInputChange = useCallback((text: string) => {
+    setInput(text);
+  }, []);
 
   return (
     <>
@@ -35,10 +37,10 @@ const Decoding = ({ vocab }: DecodingProps) => {
         <PromptInput
           title="Tokens Input"
           placeholder="Insert comma-separated tokens..."
-          tooltip="Enter comma-separated integers values (e.g., 323, 5)"
+          tooltip="Enter comma-separated integer values (e.g., 323, 5)"
           input={input}
           rows={4}
-          onInputChange={handleDecode}
+          onInputChange={handleInputChange}
         />
 
         <PromptOutput

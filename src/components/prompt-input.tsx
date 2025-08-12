@@ -12,7 +12,7 @@ const PromptInput = ({
   onInputChange,
 }: PromptInputProps) => {
   return (
-    <div className="bg-linear-to-br from-blue-100/80 to-blue-100/20 md:w-1/2 p-4 rounded-md flex flex-col justify-between">
+    <div className="bg-linear-to-br from-blue-100/80 to-blue-100/20 md:w-1/2 p-4 rounded-md flex flex-col justify-between shadow-md/80 shadow-blue-500/20">
       <div>
         <div className="flex gap-2 items-center mb-1">
           <p className="text-md font-bold">{title}</p>

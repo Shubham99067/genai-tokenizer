@@ -15,13 +15,14 @@ const PromptOutput = ({
 
   const invVocab = useMemo(() => {
     if (!vocab) return {};
+
     return Object.fromEntries(
       Object.entries(vocab).map(([tok, id]) => [id, tok])
     );
   }, [vocab]);
 
   return (
-    <div className="bg-linear-to-br from-blue-100/80 to-blue-100/40 md:w-1/2 p-4 rounded-md">
+    <div className="bg-linear-to-br from-blue-100/80 to-blue-100/40 md:w-1/2 p-4 rounded-md shadow-md/80 shadow-blue-500/20">
       <div className="flex justify-between items-center mb-1">
         <p className="text-md font-bold">{title}</p>
         {isEncode && (
@@ -55,7 +56,7 @@ const PromptOutput = ({
             })}
           </div>
         ) : (
-          <p className="text-sm p-2.5 whitespace-pre">{message}</p>
+          <p className="text-sm font-mono p-2.5 whitespace-pre">{message}</p>
         )}
       </div>
 

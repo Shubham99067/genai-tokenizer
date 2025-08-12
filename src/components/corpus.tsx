@@ -1,19 +1,26 @@
-import { useVocabulary } from "../hooks/useVocabulary";
+import { RxInfoCircled } from "react-icons/rx";
+
+import { useVocabulary } from "../context/VocabularyContext";
 
 const Corpus = () => {
-  const { corpus, setCorpus, rebuildVocab } = useVocabulary(
-    `The quick brown fox jumps over the lazy dog. Natural language processing is a field of artificial intelligence that focuses on enabling computers to understand, interpret, and generate human language. It involves various techniques like tokenization, parsing, and semantic analysis. Generative AI models learn from vast amounts of text data to create new and coherent content. They use sophisticated tokenizers to break down text into numerical representations.`
-  );
+  const { corpus, setCorpus, learnVocabulary } = useVocabulary();
 
   return (
-    <div className="bg-linear-to-br from-blue-100/80 to-blue-100/20 w-full p-4 rounded-md flex flex-col md:flex-row justify-between">
+    <div className="bg-linear-to-br from-blue-100/80 to-blue-100/20 w-full p-4 rounded-md flex flex-col md:flex-row justify-between shadow-md/80 shadow-blue-500/20">
       <div className="flex md:flex-col justify-between items-center mb-4 md:mb-0 md:items-start w-full md:w-1/3">
         <p className="text-xl font-bold md:mt-4">
-          Corpus for Vocabulary Learning
+          Corpus for Vocabulary Learning{" "}
+          <span
+            className="tooltip font-light"
+            data-tip="The corpus (paragraphs, sentences, etc) is used to build the vocabulary. Use a large corpus to train the vocabulary effectively."
+          >
+            <RxInfoCircled className="pt-1.5" />
+          </span>
         </p>
+
         <button
-          className="btn bg-white hover:shadow-2xl/70 border-none btn-md rounded-md shadow-xl/60 shadow-blue-500/40"
-          onClick={rebuildVocab}
+          className="btn bg-white shadow-xl/30 border-none btn-md rounded-md hover:shadow-xl/60 shadow-blue-500/40"
+          onClick={learnVocabulary}
         >
           Learn Vocabulary
         </button>

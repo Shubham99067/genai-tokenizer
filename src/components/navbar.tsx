@@ -1,8 +1,9 @@
 import { RxGithubLogo } from "react-icons/rx";
+import { useVocabulary } from "../context/VocabularyContext";
 
-import type { Vocab } from "../utils/types";
+const Navbar = () => {
+  const { vocab } = useVocabulary();
 
-const Navbar = ({ vocab }: { vocab: Vocab }) => {
   return (
     <div className="navbar flex justify-between mb-2">
       <a href="/" className="text-xl font-bold">
@@ -12,7 +13,8 @@ const Navbar = ({ vocab }: { vocab: Vocab }) => {
 
       <div className="flex items-center gap-4">
         <p className="text-xs font-mono">
-          Current Vocab Size: {Object.keys(vocab).length}
+          Vocabulary Size:{" "}
+          <span className="font-bold">{Object.keys(vocab).length}</span>
         </p>
         <button
           className="btn bg-white hover:shadow-xl/70 border-none btn-sm rounded-md shadow-xl/40 shadow-blue-500/40"
