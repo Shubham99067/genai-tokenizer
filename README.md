@@ -50,6 +50,12 @@ npm run preview
 - **Decoding:** Maps numeric IDs back to tokens; unknown IDs render as `[UNK]`.
 - **Performance:** Vocabulary memoized and updated efficiently to prevent unnecessary recomputation and re-renders.
 
-## Credits
+## For suggestions or issues, feel free to:
 
-Built with ❤️ by Vinay — [https://x.com/n4ryn\_](https://x.com/n4ryn_)
+- Open an issue on [GitHub Issues](https://github.com/n4ryn/genai-tokenizer/issues).
+- Reach out to me on [Twitter](https://x.com/n4ryn_) or [LinkedIn](https://www.linkedin.com/in/n4ryn/).
+
+## Badges
+
+[![GitHub Stars](https://img.shields.io/github/stars/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/namaste-dsa/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/namaste-dsa/network)
