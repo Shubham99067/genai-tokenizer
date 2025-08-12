@@ -6,8 +6,8 @@ const Navbar = ({ vocab }: { vocab: Vocab }) => {
   return (
     <div className="navbar flex justify-between mb-2">
       <a href="/" className="text-xl font-bold">
-        Token
-        <span className="text-blue-500/80 bg-[#FAF8DF] pr-2 py-2">izer</span>
+        <span className="text-blue-500/80 bg-[#FAF8DF] pl-2 py-2">GenAi</span>
+        Tokenizer
       </a>
 
       <div className="flex items-center gap-4">

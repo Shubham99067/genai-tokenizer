@@ -18,9 +18,13 @@ function App() {
         visualize every token in your prompt.
       </h1>
 
+      <div className="divider mt-1"></div>
+
       <Corpus />
       <Encoding vocab={vocab} setVocab={setVocab} />
       <Decoding vocab={vocab} />
+
+      <div className="divider mb-0"></div>
 
       <Footer />
     </div>
