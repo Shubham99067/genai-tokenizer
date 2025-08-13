@@ -4,6 +4,10 @@ An interactive tokenizer playground to explore how text breaks into tokens, how 
 
 ![Project Screenshot](./public/project.png)
 
+### Demo
+
+[Video Demo on cap.so/s/pn6qm0pxwkjfet9](https://cap.so/s/pn6qm0pxwkjfet9)
+
 ## Features
 
 - **Corpus Learning:** Type or paste large paragraphs to _learn_ vocabulary explicitly.
