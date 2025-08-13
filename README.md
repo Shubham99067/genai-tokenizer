@@ -8,7 +8,7 @@ An interactive tokenizer playground to explore how text breaks into tokens, how 
 
 - **Corpus Learning:** Type or paste large paragraphs to _learn_ vocabulary explicitly.
 - **Dynamic Vocabulary Growth:** Vocabulary updates both when learning corpus and dynamically as you type in the Encoding input.
-- **Persistent Vocabulary:** Vocabulary is stored centrally in React Context and persisted to `localStorage` for session consistency.
+- **Persistent Vocabulary:** Vocabulary is stored centrally in React Context and persisted to a Github Gist for accessibility of vocabulary across devices.
 - **Encoding:** Instantly see tokens and their assigned IDs for any text input.
 - **Decoding:** Decode by entering comma-separated token IDs, showing the original text.
 - **Token Visualization:** View tokens with color-coded types (words, punctuation, whitespace, etc.).
@@ -19,7 +19,7 @@ An interactive tokenizer playground to explore how text breaks into tokens, how 
 - React + TypeScript + Vite.
 - Tailwind CSS + DaisyUI for responsive, accessible styling.
 - React Context + Hooks for centralized vocabulary state management.
-- LocalStorage-backed vocabulary persistence to keep vocab consistent across sessions.
+- Github Gist API to persistent storage of vocabulary.
 
 ## Getting Started
 
@@ -49,7 +49,7 @@ npm run preview
 ## Tokenizer Details
 
 - **Token Types Recognized:** words, numbers, punctuation, whitespace, special tokens.
-- **Vocabulary Management:** Centralized via React Context, updated from corpus or encoding inputs, and persisted to `localStorage`.
+- **Vocabulary Management:** Centralized via React Context, updated from corpus or encoding inputs, and persisted to `vocab.json` on Github Gist.
 - **Encoding:** Assigns incremental numeric IDs per unique token, merging new tokens into existing vocabulary.
 - **Decoding:** Maps numeric IDs back to tokens; unknown IDs render as `[UNK]`.
 - **Performance:** Vocabulary updates are batched and memoized to prevent unnecessary recomputations and UI re-renders.

@@ -56,7 +56,9 @@ const PromptOutput = ({
             })}
           </div>
         ) : (
-          <p className="text-sm font-mono p-2.5 whitespace-pre">{message}</p>
+          <p className="text-sm font-mono p-2.5 whitespace-pre-wrap">
+            {message}
+          </p>
         )}
       </div>
 
