@@ -8,9 +8,10 @@ import {
 
 import { buildVocabulary } from "../utils/tokenizer";
 import type { Vocab, VocabularyContextValue } from "../utils/types";
-import { DEFAULT_CORPUS } from "../utils";
 
-const VOCAB_STORAGE_KEY = "custom_tokenizer_vocab";
+import { DEFAULT_CORPUS, SPECIAL_TOKENS } from "../utils";
+import { fetchVocabFromGist, updateVocabInGist } from "../utils/gistApi";
+
 const VocabularyContext = createContext<VocabularyContextValue | undefined>(
   undefined
 );
@@ -22,36 +23,34 @@ export const VocabularyProvider = ({
 }) => {
   const [corpus, setCorpus] = useState<string>(DEFAULT_CORPUS);
   const [vocab, setVocab] = useState<Vocab>({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedVocab = localStorage.getItem(VOCAB_STORAGE_KEY);
-    if (savedVocab) {
+    async function load() {
       try {
-        setVocab(JSON.parse(savedVocab));
-      } catch {
-        console.warn("Failed to parse vocab from localStorage");
+        const gistVocab = await fetchVocabFromGist();
+        setVocab(gistVocab);
+      } catch (err) {
+        console.error("Error loading vocab from gist:", err);
+      } finally {
+        setLoading(false);
       }
     }
+    load();
   }, []);
 
-  useEffect(() => {
-    if (Object.keys(vocab).length > 0) {
-      localStorage.setItem(VOCAB_STORAGE_KEY, JSON.stringify(vocab));
-    }
-  }, [vocab]);
-
-  const learnVocabulary = useCallback(() => {
+  const learnVocabulary = useCallback(async () => {
     if (!corpus.trim()) {
       setVocab({});
-      localStorage.removeItem(VOCAB_STORAGE_KEY);
+      await updateVocabInGist({});
       return;
     }
-    const newVocab = buildVocabulary(corpus);
+    const newVocab = buildVocabulary(corpus, vocab, updateVocabInGist);
     setVocab(newVocab);
-  }, [corpus]);
+  }, [corpus, vocab]);
 
   const learnFromAdditionalText = useCallback(
-    (text: string) => {
+    async (text: string) => {
       if (!text.trim()) return;
       const mergedVocab = { ...vocab };
 
@@ -60,7 +59,6 @@ export const VocabularyProvider = ({
 
       let idx = Object.keys(mergedVocab).length;
 
-      const SPECIAL_TOKENS = ["<PAD>", "<UNK>", "<CLS>", "<SEP>", "<MASK>"];
       for (const token of SPECIAL_TOKENS) {
         if (!(token in mergedVocab)) {
           mergedVocab[token] = idx++;
@@ -74,14 +72,15 @@ export const VocabularyProvider = ({
       }
 
       setVocab(mergedVocab);
+      await updateVocabInGist(mergedVocab);
     },
     [vocab]
   );
 
-  const resetVocab = useCallback(() => {
+  const resetVocab = useCallback(async () => {
     setCorpus("");
     setVocab({});
-    localStorage.removeItem(VOCAB_STORAGE_KEY);
+    await updateVocabInGist({});
   }, []);
 
   return (
@@ -93,6 +92,7 @@ export const VocabularyProvider = ({
         learnVocabulary,
         learnFromAdditionalText,
         resetVocab,
+        loading,
       }}
     >
       {children}

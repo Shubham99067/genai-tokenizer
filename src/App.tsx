@@ -9,7 +9,7 @@ import { VocabularyProvider } from "./context/VocabularyContext";
 function App() {
   return (
     <VocabularyProvider>
-      <div className="flex flex-col gap-4 items-center max-w-4xl m-auto px-8">
+      <div className="flex flex-col gap-4 items-center max-w-4xl m-auto px-4 md:px-8">
         <Navbar />
 
         <h1 className="text-3xl font-extralight">

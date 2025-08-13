@@ -28,4 +28,5 @@ export interface VocabularyContextValue {
   learnVocabulary: () => void;
   learnFromAdditionalText: (text: string) => void;
   resetVocab: () => void;
+  loading: boolean;
 }

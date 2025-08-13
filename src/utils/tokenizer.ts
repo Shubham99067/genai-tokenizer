@@ -1,33 +1,18 @@
-import { SPECIAL_TOKENS, VOCAB_STORAGE_KEY } from ".";
+import { SPECIAL_TOKENS } from ".";
 import type { InvVocab, Vocab } from "./types";
 
-/**
- * Tokenizes text while preserving spaces, tabs, and newlines.
- */
+/** Tokenizes text while preserving spaces, tabs, and newlines. */
 function tokenize(text: string): string[] {
   return text.match(/\r\n|\n|\t| |\r|[!?.,;:'"(){}\[\]]|\w+/g) || [];
 }
 
-/**
- * Load vocab from localStorage.
- */
-function loadVocab(): Vocab | null {
-  const stored = localStorage.getItem(VOCAB_STORAGE_KEY);
-  return stored ? JSON.parse(stored) : null;
-}
-
-/**
- * Save vocab to localStorage.
- */
-function saveVocab(vocab: Vocab): void {
-  localStorage.setItem(VOCAB_STORAGE_KEY, JSON.stringify(vocab));
-}
-
-/**
- * Build vocabulary from input text (persists to localStorage).
- */
-export function buildVocabulary(text: string): Vocab {
-  const vocab: Vocab = loadVocab() || {};
+/** Build vocabulary from input text (external save) */
+export function buildVocabulary(
+  text: string,
+  existingVocab: Vocab,
+  saveFn: (vocab: Vocab) => Promise<void> | void
+): Vocab {
+  const vocab: Vocab = { ...existingVocab };
   let idx = Object.keys(vocab).length;
 
   // Add special tokens if vocab is empty
@@ -44,22 +29,18 @@ export function buildVocabulary(text: string): Vocab {
     }
   }
 
-  saveVocab(vocab);
+  saveFn(vocab);
   return vocab;
 }
 
-/**
- * Encode input text into list of token IDs.
- */
+/** Encode input text into list of token IDs */
 export function encode(text: string, vocab: Vocab): number[] {
   return tokenize(text).map((token) =>
     token in vocab ? vocab[token] : vocab["<UNK>"]
   );
 }
 
-/**
- * Decode list of token IDs back into text.
- */
+/** Decode list of token IDs back into text */
 export function decode(tokenIds: number[], vocab: Vocab): string {
   const invVocab: InvVocab = Object.fromEntries(
     Object.entries(vocab).map(([token, id]) => [id, token])
